@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<title>Form</title>
+<style>
+	body{
+		margin:0;
+		padding:0;
+		background: #f6f9fc;   
+	}
+	.width-100{
+		width: 100%;
+	}
+	.p_error {
+    margin-bottom: 0;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: #2d2d2d;
+	}
+	.m-30bottom{
+		margin-bottom: 30px;
+	}
+	.heading-style h2 {
+	  margin: 0;
+	  text-align: center;
+	  font-size: 70px;
+	  font-family: 'Playfair Display';
+	  position: relative;
+	  color:#4e4a4a;
+	}
+	.form-div-style{
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding:50px 0;
+	}
+	.heading-style h2:after {
+	  content: "Contact Us";
+    position: absolute;
+    top: -22px;
+    left: 0;
+    display: block;
+    right: 0;
+    color: #378adb17;
+    font-family: 'Playfair Display';
+    font-size: 85px;
+	}
+	.wrapper{
+		width: 1140px;
+		margin: auto;
+		padding: 80px 20px;  
+	}
+	.font-style{
+		font-family:Playfair Display;
+		font-size: 32px;
+		font-weight: 700;
+		margin: 0 0 8px 0;
+		color:#4e4a4a;
+	}
+	.m-bottom {
+    margin-bottom: 30px;
+	}
+	.para-style{
+		font-size: 16px;
+		font-weight: 500;
+		font-family: Montserrat;
+		line-height: 26px;
+		margin-top: 5px;
+		color:#2d2d2d;
+	}
+	input#submit {
+	  border: 2px solid #ccdef1 !important;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    border-radius: 15px;
+    font-weight: 600;
+    background: transparent;
+    transition: .5s;
+	}
+	input#submit:hover {
+    background: #388cde;
+    color: #fff;
+	}
+	.div-left{
+		width: 40%;
+	}
+	.form-right{
+		width: 57%;
+		z-index: 1;
+	}
+	.input-design {
+	  width: 100%;
+	  line-height: 46px;
+    display: block;
+    text-indent: 20px;
+    padding: 0;
+    border: 1px solid #ccdef1 !important;
+    border-radius: 15px;
+    background: transparent;
+    border-bottom: 2px solid #ccdef1 !important;
+	}
+	::placeholder{
+		font-size: 14px;
+		color: #2d2d2d;
+		font-family: Montserrat;
+	}
+	.input-design:focus{
+		outline: none;
+	}
+	.width-style{
+		width: 47%;
+    margin-bottom: 20px;
+	}
+	.flex-style{
+		display: flex;
+		justify-content: space-between;
+	}
+	.globe-container, .globe {
+	  width: 600px;
+	  height: 600px;
+	}
+	.globe-container {
+		position: relative;
+	  display: inline-block;
+	  transform: scale(1);
+	}
+	.globe {
+	  position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    left: -230px;
+	}
+	.globe-worldmap, .globe-worldmap-front, .globe-worldmap-back, .globe-sphere, .globe-outer-shadow, .globe-inner-shadow {
+	  position: absolute;
+	  display: block;
+	  margin: 0;
+	}
+	.globe-sphere, .globe-outer-shadow, .globe-inner-shadow {
+		left: 0;
+	  top: 0;
+	  width: 630px;
+	  height: 630px;
+	  background-position: 0px 0px;
+	  background-repeat: no-repeat;
+	}
+	.globe-worldmap {
+	  left: 0;
+	  top: 0;
+	  width: 630px;
+	  height: 630px;
+	  overflow: hidden;
+	  border-radius: 50%;
+	}
+	.globe-worldmap-front, .globe-worldmap-back {
+	  left: 0;
+		top: 0;
+		width: 1080px;
+		height: 100%;
+		overflow: visible;
+		background-image: url(img/map.svg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.globe-outer-shadow {
+	  left: 0%;
+	  top: 480px;
+	  width: 100%;
+	  height: 70px;
+		background-image: url(img/shadow.svg);
+	}
+	.globe-inner-shadow {
+	  background-image: url(img/inner-shadow.svg);
+	}
+	.globe-worldmap-front {
+	  background-position: 30px 145px;
+		animation: textureSpinreverse 25s linear infinite;
+	}
+	.globe-worldmap-back {
+	  background-position: 0px -170px;
+		animation: textureSpin 25s linear infinite;
+	}
+	@keyframes textureSpin {
+	  from {
+	    transform: translateX(0);
+	  }
+	  to {
+	    transform: translateX(-47.5%);
+	  }
+	}
+	@keyframes textureSpinreverse {
+	  from {
+	    transform: translateX(-47.5%);
+	  }
+	  to {
+	    transform: translateX(0);
+	  }
+	}
+	.cell100 {
+    font-family: montserrat;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #378cde;
+    text-align: left;
+    padding: 10px;
+    width: 16%;
+    font-weight: 500;
+	}
+	#table-data{
+		width: 100%;
+		border-collapse: collapse;
+		margin-top: 20px;
+		box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -moz-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -o-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    -ms-box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+	}
+	#table-data tr:nth-child(even) {
+    background-color: #378cde2e;
+	}
+	#table-data td{
+    font-family: montserrat;
+    font-size: 16px;
+    color: #4e4a4a;
+    line-height: 1.4;
+    padding: 10px;
+    width: 16%;	
+  }
+  .editable:disabled {
+    background: no-repeat;
+    border: none;
+	}
+	.editable {
+    padding: 4px;
+    width: 90%;
+    border-bottom: 2px solid #378cde !important;
+    border: 0;
+    background: no-repeat;
+	}
+	button.del-btn, .edit-btn {
+    border: 2px solid #2f8bec;
+    background: none;
+    padding: 4px 20px;
+    font-size: 14px;
+    border-radius: 10px;
+    transition: .5s;
+	}
+	button.edit-btn:hover, button.del-btn:hover  {
+    background: #378cdea8;
+    color: #fff;
+	}
+	.del-btn {
+	    margin-left: 10px;
+	}
+	.editable:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+	}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="heading-style">
+			<h2>Contact Us</h2>
+		</div>
+		<div class="form-div-style">
+			<div class="div-left">
+				<div class="globe-container">
+				  <div class="globe">
+				    <div class="globe-sphere"></div>
+				    <div class="globe-worldmap">
+				      <div class="globe-worldmap-back"></div>
+				      <div class="globe-worldmap-front"></div>
+				    </div>
+				    <div class="globe-inner-shadow"></div>
+				  </div>
+				</div>
+			</div>
+			<div class="form-right">
+				<h1 class="font-style">This is a form</h1>
+				<p class="para-style">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+				<p class="para-style m-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<form id="my-form">
+				    <div class="flex-style">
+					    <div class="width-style"><input type="text" data-name="" id="input_name" class="input-design" placeholder="First Name" size="10" maxlength="10" />
+					    <p id="name_error" class="p_error"></p></div>
+					    <div class="width-style"><input type="text" id="input_lastname" class="input-design" placeholder="Last Name" size="10" maxlength="10" />
+					    <p id="lname_error" class="p_error"></p></div>
+				    </div>
+				    <div class="flex-style">
+					    <div class="width-style"><input type="mail" id="input_email" class="input-design" placeholder="Email"/>
+					    <p id="email_error" class="p_error"></p></div>
+					    <div class="width-style"><input type="tel" id="input_phone" class="input-design" placeholder="Phone Number" size="8" maxlength="10" />
+					    <p id="tel_error" class="p_error"></p></div>
+				    </div>
+				    <div class="flex-style m-30bottom">
+				    	<div class="width-100">
+					    	<textarea id="text-area" class="input-design" rows="4" cols="50" placeholder="Enter Text"></textarea>
+						    <p id="textarea_error" class="p_error"></p>
+						  </div>
+				    </div>
+				    <input type="submit" id="submit" value="Submit" />
+				</form>
+			</div>
+		</div>
+		<div id="P">
+			<h1 class="font-style"><center>Form Content</center></h1>
+			<table id="table-data" class="width-100">
+				<thead class="table-head">
+					<tr>
+						<th class="cell100 column1">First Name</th>
+						<th class="cell100 column2">Last Name</th>
+						<th class="cell100 column3">Email</th>
+						<th class="cell100 column4">Phone Number</th>
+						<th class="cell100 column5">Message</th>
+						<th class="cell100 column6">Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>	
+	</div>
+</body>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#input_name").keypress(function(e) {
+		  	$('.p_error').hide();
+		});
+		$(function(){
+    $("#submit").click(function(e) {
+    	e.preventDefault();
+    		if($("#input_name").val() == "" ){
+    			$('#name_error').html("Please enter your name!");
+    		}
+    		if($("#input_lastname").val() == ""){
+    			$('#lname_error').html("Please enter last name!");
+    		}
+    		if($("#input_email").val() == ""){
+    			$('#email_error').html("Please enter email here!");
+    		}
+    		if($("#input_phone").val() == ""){
+    			$('#tel_error').html("Please enter number!");
+    		}
+    		if($("#text-area").val() == ""){
+    			$('#textarea_error').html("Please enter message!");
+    		}
+        var value = $("#input_name").val();
+        var lastValue = $("#input_lastname").val();
+        var emailValue = $("#input_email").val();
+        var telValue = $("#input_phone").val();
+        var textValue = $("#text-area").val();
+        $('table > tbody').append(`<tr><td><input type="text" value="${value}" class="editable" disabled></td><td><input type="text" value="${lastValue}" class="editable" disabled></td><td><input type="mail" value="${emailValue}" class="editable" disabled></td><td><input type="tel" value="${telValue}" class="editable" disabled></td><td><input type="text-area" value="${textValue}" class="editable" disabled></td><td><button class="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button><button class="del-btn"><i class="fa-solid fa-xmark"></i></button></td></tr>`)
+        // let $table = $("#table-data");
+		// let $newRow = $("<tr>").appendTo($table);
+        // $("<td>").text(value).appendTo($newRow);
+        // $("<td>").text(lastValue).appendTo($newRow);
+        // $("<td>").text(emailValue).appendTo($newRow);
+        // $("<td>").text(telValue).appendTo($newRow);
+		// 		$("<td>").text(textValue).appendTo($newRow);
+		// 		$("<td>").html('<button class="editButton">Edit</button><button class="deleteButton">Delete</button>').appendTo($newRow);
+        // Clear input fields
+        $("#my-form")[0].reset();
+	    });
+    	// Delete input fields
+    $("#table-data").on("click", ".del-btn", function() {
+    	$(this).parents('tr').remove();
+    });
+
+    $("#table-data").on("click", ".edit-btn", function () {
+        let row = $(this).closest("tr");
+
+        row.find('.editable').one('mouseover' , function(){
+        	$(this).removeAttr('disabled');
+        	$(this).one('mouseout' , function(){
+        		$(this).attr('disabled' , 'disabled');
+        		$(this).off('mouseover');
+        	})
+        })
+        // let nameCell = row.find("td:eq(0)");
+        // let emailCell = row.find("td:eq(1)");
+        // let mobileCell = row.find("td:eq(2)");
+        // let addressCell = row.find("td:eq(3)");
+
+        // let nameInput = prompt("Enter the updated name:", nameCell.text());
+        // let emailInput = prompt("Enter the updated email:", emailCell.text());
+        // let numberInput = prompt("Enter the updated mobile details:", mobileCell.text());
+        // let addressInput = prompt("Enter the updated address:", addressCell.text());
+
+        // nameCell.text(nameInput);
+        // emailCell.text(emailInput);
+        // mobileCell.text(numberInput);
+        // addressCell.text(addressInput);
+
+
+    });
+	});
+	});
+	</script>
+</html>
